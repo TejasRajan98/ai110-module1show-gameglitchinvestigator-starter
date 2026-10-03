@@ -8,14 +8,17 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 
+  the hints were backwards
+  the difficulty was backwards
+
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
+| guess of 60| "Too High" hint| "Too Low" hint shown| "none"|app.py, check_guess
+| Difficulty Hard | Lower range values| Higher range values | "none"| app.py, get_range_for_difficulty
 | | | | |
 
 ---
@@ -26,6 +29,8 @@ Document at least 3 bugs you found. Add rows as needed.
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion you did not accept as written (including what the AI suggested, why you rejected or changed it, and how you verified your version). It does not have to be a suggestion that was wrong: over-engineered, out of scope, harder to read, or a poor fit for this codebase all count.
 
+I used Claude Code. I suggested the ai get_range_for_difficulty and check_guess logic isn't correct and suggested the logic. I verified and corrected with the AI
+
 ---
 
 ## 3. Debugging and testing your fixes
@@ -34,6 +39,8 @@ Document at least 3 bugs you found. Add rows as needed.
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
+
+Created and tested test cases. AI helped design test cases. And I ran the tests.
 
 ---
 
