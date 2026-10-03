@@ -1,6 +1,13 @@
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
-    raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+    if difficulty == "Easy":
+        return 1, 20
+    if difficulty == "Normal":
+        return 1, 100
+    if difficulty == "Hard":
+        # FIX: I spotted Hard (1-50) was easier than Normal; Claude explained why, moved this function here, and set 1-200 in agent mode
+        return 1, 200
+    return 1, 100
 
 
 def parse_guess(raw: str):
@@ -18,7 +25,17 @@ def check_guess(guess, secret):
 
     outcome examples: "Win", "Too High", "Too Low"
     """
-    raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
+    # FIX: Claude moved check_guess here from app.py in agent mode and fixed the str-vs-int comparison I asked it to look at
+    # app.py passes the secret as a str on even attempts; compare numerically, not lexicographically
+    secret = int(secret)
+
+    if guess == secret:
+        return "Win", "🎉 Correct!"
+
+    # FIX: I flagged the swapped high/low hints; Claude corrected them and wrote pytest regression tests to confirm
+    if guess > secret:
+        return "Too High", "📉 Go LOWER!"
+    return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
